@@ -1,8 +1,8 @@
-# Rclone Google Drive sync scripts
+# Usefull scripts for daily use on Linux
 
-As Google insist on forget about linux users, we have to use alternative ways to use Google Drive.
+## Rclone Google Drive Backup
 
-This scripts use [rclone]() to make specific folder of Google Drive Available locally.
+As Google insist on not releasing a Drive client for linux, we have to search for alternative ways to use Google Drive. This scripts use [rclone]() to make specific folder of Google Drive Available locally. Rclone has a `mount` command that is usefull for light use, this scripts complement it by keeping folders that are under heavy use locally for fast access. See the crontab examples bellow for the `mount` command.
 
 Before attempting to use read the documentation of [rclone]().
 
