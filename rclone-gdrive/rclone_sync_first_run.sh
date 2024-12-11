@@ -27,6 +27,7 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --drive-chunk-size $RCLONE_CHUNK_SIZE \
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
       --check-access \
+      --no-update-modtime \
       --resync \
       --verbose
 

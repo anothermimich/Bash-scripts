@@ -41,8 +41,8 @@ After the tests edit `crontab`
 
 Lines to be added
 
-    */15 * * * * /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_timer.sh
-    @reboot sleep 30 && /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_inotify.sh
+    */15 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
+    @reboot sleep 30 && cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_inotify.sh
 
 If you want to mount a drive as well add the line bellow with updated locations
 
