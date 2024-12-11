@@ -13,13 +13,15 @@ Edit the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) to refers to 
     REMOTE_DIR=('remote-name:/folder-name'  'remote-name:/folder-name')
     LOCAL_DIR=('folder-name' 'folder-name')
 
+Move the scripts to the wanted folder, I'm using `/home/lu/Codes/Bash-scripts/rclone-gdrive`
+
 Make the scripts executable
 
-    chmod +x ~/.local/bin/rclone_*.sh
+    chmod +x /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_*.sh
 
 Run the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) on the terminal
 
-    ./rclone_sync_first_run.sh
+    ./home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_sync_first_run.sh
 
 If the result is
 
@@ -33,8 +35,8 @@ After the tests edit `crontab`
 
 Lines to be added
 
-    */15 * * * * ~/.local/bin/rclone_timer.sh
-    @reboot sleep 30 && ~/.local/bin/rclone_inotify.sh
+    */15 * * * * /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_timer.sh
+    @reboot sleep 30 && /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_inotify.sh
 
 If you want to mount a drive as well add the line bellow with updated locations
 
