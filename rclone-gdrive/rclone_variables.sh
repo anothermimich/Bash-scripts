@@ -2,7 +2,7 @@
 # rclone_variables.sh
 
 REMOTE_DIR=('g_drive:/Codes'  'g_drive:/Design')
-LOCAL_DIR=('$HOME/Codes' '$HOME/Design') 
+LOCAL_DIR=('/home/lu/Codes' '/home/lu/Design') 
 RCLONE_RETRIES=3
 RCLONE_CHECKERS=4
 RCLONE_TRANFERS=8

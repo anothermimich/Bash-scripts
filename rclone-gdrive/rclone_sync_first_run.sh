@@ -6,19 +6,6 @@ source "$(dirname "$0")/rclone_variables.sh"
 # Made by Lu Immich a.k.a https://github.com/anothermimich
 #
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
-#
-# A 64M chunk-size is used for performance purposes.
-# Google recommends as large a chunk size as possible.
-# Rclone will use the following amount of RAM at run-time
-# (8MB chunks by default; not high enough)...
-#
-#    RAM = (chunk-size * num-transfers)
-#
-# So our command will use larger chunk sizes (more RAM)...
-#
-#    RAM = 0.5 GB = (64MB * 8 transfers)
-#
-# For more details... https://github.com/ncw/rclone/issues/397
 
 echo "$(date +'%Y/%m/%d %H:%M:%S') Sync started"
 
@@ -33,7 +20,6 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --drive-skip-shortcuts \
       --drive-skip-dangling-shortcuts \
       --metadata \
-      --log-file "$HOME/.config/rclone/rclone.log" \
       --retries $RCLONE_RETRIES \
       --checkers $RCLONE_CHECKERS \
       --transfers $RCLONE_TRANFERS \
