@@ -8,4 +8,18 @@ Before attempting to use read the documentation of [rclone](https://rclone.org/)
 
 Make sure to use `--resync` on the first run. I strongly suggest that you also try the scripts with a test folder or use `--dry-run`.
 
-## Crontab
+Make the scripts executable
+
+    chmod +x ~/.local/bin/rclone_*.sh
+
+### Crontab
+
+Edit crontab
+
+    crontab -e
+
+Lines to be added
+
+    */15 * * * * ~/.local/bin/rclone_timer.sh
+    @reboot sleep 30 && ~/.local/bin/rclone_inotify.sh
+    @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=9999h --dir-cache-time=9999h --vfs-cache-max-size 5G
