@@ -50,7 +50,7 @@ If you want to mount a drive as well add the line bellow with updated locations
 
 If you are having problems check the log file at `$HOME/.config/rclone/rclone.log`
 
-### Chunk-size
+### Chunk-size<sup>1</sup>
 
 A 64M chunk-size is used for performance purposes. Google recommends as large a chunk size as possible. Rclone will use the following amount of RAM at run-time (8MB chunks by default; not high enough)...
 
@@ -61,7 +61,8 @@ So our command will use larger chunk sizes (more RAM)...
 RAM = 0.5 GB = (64MB \* 8 transfers)
 
 For more details... https://github.com/ncw/rclone/issues/397
-This explanation was written by [Markus Craig](https://gist.github.com/markuscraig/4addaf7fcfbc281808c3d708d1d35b6f)
+
+> <sup>1</sup> This explanation was written by [Markus Craig](https://gist.github.com/markuscraig/4addaf7fcfbc281808c3d708d1d35b6f)
 
 #### Credits
 
