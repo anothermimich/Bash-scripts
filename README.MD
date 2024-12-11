@@ -1,4 +1,4 @@
-# Usefull scripts for daily use on Linux
+# Bash Linux
 
 ## Rclone Google Drive Backup
 
