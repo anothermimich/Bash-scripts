@@ -27,7 +27,8 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --stats $RCLONE_STATS_INTERVAL \
       --drive-chunk-size $RCLONE_CHUNK_SIZE \
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
-      --check-access
+      --check-access \
+      --update 
     #  Don't work
     #  --recover \
     #  --resilient \
