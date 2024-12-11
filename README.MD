@@ -8,6 +8,12 @@ Before attempting to use read the documentation of [rclone](https://rclone.org/)
 
 ### Implementation
 
+Create the local folders and an `RCLONE_TEST` file inside of it
+
+    mkdir Codes
+    cd Codes/
+    touch RCLONE_TEST
+
 Edit the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) to refers to your envisioned folder or folder.
 
     REMOTE_DIR=('remote-name:/folder-name'  'remote-name:/folder-name')
