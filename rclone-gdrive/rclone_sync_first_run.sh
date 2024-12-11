@@ -20,7 +20,7 @@ source "$(dirname "$0")/rclone_variables.sh"
 #
 # For more details... https://github.com/ncw/rclone/issues/397
 
-echo "$(date +'%Y/%m/%d %H:%M:%S') Sync started" >> "$HOME/.config/rclone/rclone.log"
+echo "$(date +'%Y/%m/%d %H:%M:%S') Sync started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
@@ -40,23 +40,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --stats $RCLONE_STATS_INTERVAL \
       --drive-chunk-size $RCLONE_CHUNK_SIZE \
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
-      --check-access
-    #  Don't work
-    #  --recover \
-    #  --resilient \
-    #  --track-renames \
-    #  --create-empty-src-dirs \
-    #  --fix-case \
-    #  --max-lock 2m \
+      --check-access \
+      --resync \
+      --verbose
 
     sleep 1
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done ${i}"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed  ${i}"
     fi
   done
 else
-  echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax dir error" >> "$HOME/.config/rclone/rclone.log"
+  echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax dir error"
 fi
