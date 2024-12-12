@@ -1,5 +1,5 @@
 #!/bin/bash
-# rclone_sync.sh
+# rclone_sync_first_run.sh
 
 source "$(dirname "$0")/rclone_variables.sh"
 
