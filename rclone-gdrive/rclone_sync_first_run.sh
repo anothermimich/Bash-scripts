@@ -7,7 +7,7 @@ source "$(dirname "$0")/rclone_variables.sh"
 #
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
-echo "$(date +'%Y/%m/%d %H:%M:%S') Sync started"
+echo "$(date +'%Y/%m/%d %H:%M:%S') First sync started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
@@ -28,15 +28,22 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
       --check-access \
       --no-update-modtime \
+      --recover \
+      --max-lock 2m \
+      --resilient \
+      --fix-case \
+      --track-renames \
+      --create-empty-src-dirs \
+      --conflict-resolve newer \
       --resync \
       --verbose
 
     sleep 1
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') First sync done, entry ${i}"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed, entry ${i}"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') First sync failed, entry ${i}"
     fi
   done
 else

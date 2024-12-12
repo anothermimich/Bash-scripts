@@ -8,6 +8,10 @@ Before attempting to use this script you need to configure and read the document
 
 ### Implementation
 
+Some of the flags used don't work in older version of rclone, so update it
+
+    sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
 Create the local folders and an `RCLONE_TEST` file inside of it
 
     mkdir folder-name

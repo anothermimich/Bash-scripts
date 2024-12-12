@@ -28,21 +28,21 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --drive-chunk-size $RCLONE_CHUNK_SIZE \
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
       --no-update-modtime \
-      --check-access 
-    #  Don't work at 1.60.1-DEV
-    #  --recover \
-    #  --resilient \
-    #  --track-renames \
-    #  --create-empty-src-dirs \
-    #  --fix-case \
-    #  --max-lock 2m \
+      --check-access \
+      --recover \
+      --max-lock 2m \
+      --resilient \
+      --fix-case \
+      --track-renames \
+      --create-empty-src-dirs \
+      --conflict-resolve newer
 
     sleep 5
 
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Exiting, sync failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
       exit
     fi
   done
