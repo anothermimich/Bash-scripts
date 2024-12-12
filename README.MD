@@ -32,7 +32,7 @@ Run the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) on t
 If the result is
 
 - Sync done: You can proceed with the implementation.
-- Sync failed: Ops, you need to troubleshoot.
+- Sync failed: Ops, you need to troubleshoot. Check the log file at `$HOME/.config/rclone/rclone.log`
 - Sintax dir error: Check the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) for errors. The `REMOTE_DIR` and `LOCAL_DIR` must match in order and ammount of entries.
 
 After the tests edit `crontab`
@@ -47,8 +47,6 @@ Lines to be added
 If you want to mount a drive as well add the line bellow with updated locations
 
     @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=9999h --dir-cache-time=9999h --vfs-cache-max-size 5G
-
-If you are having problems check the log file at `$HOME/.config/rclone/rclone.log`
 
 ### Chunk-size<sup>1</sup>
 
