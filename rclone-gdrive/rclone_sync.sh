@@ -37,7 +37,7 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     #  --fix-case \
     #  --max-lock 2m \
 
-    sleep 1
+    sleep 5
 
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
