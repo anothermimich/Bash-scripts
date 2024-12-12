@@ -46,7 +46,7 @@ Lines to be added
 
 If you want to mount a drive as well add the line bellow with updated locations
 
-    @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=9999h --dir-cache-time=9999h --vfs-cache-max-size 5G
+    @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
 
 If you need to add a new folder after the setup, run the following command with the new folder instead of using the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) script. Change `REMOTE_DIR` and `LOCAL_DIR` to the right locations.
 
