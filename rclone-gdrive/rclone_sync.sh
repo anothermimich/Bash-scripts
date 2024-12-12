@@ -29,7 +29,7 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
       --no-update-modtime \
       --check-access 
-    #  Don't work
+    #  Don't work at 1.60.1-DEV
     #  --recover \
     #  --resilient \
     #  --track-renames \

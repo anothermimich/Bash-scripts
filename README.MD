@@ -32,7 +32,7 @@ Run the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) on t
 If the result is
 
 - Sync done: You can proceed with the implementation.
-- Sync failed: Ops, you need to troubleshoot. Check the log file at `$HOME/.config/rclone/rclone.log`
+- Sync failed: Ops, you need to troubleshoot. Check the log file at `$HOME/.config/rclone/rclone.log`.
 - Sintax dir error: Check the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) for errors. The `REMOTE_DIR` and `LOCAL_DIR` must match in order and ammount of entries.
 
 After the tests edit `crontab`
