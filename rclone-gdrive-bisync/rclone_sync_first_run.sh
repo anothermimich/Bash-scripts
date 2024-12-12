@@ -11,10 +11,7 @@ echo "$(date +'%Y/%m/%d %H:%M:%S') First sync started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
-   
-    echo "$(date +'%Y/%m/%d %H:%M:%S') Remote --> Local, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
-
-    rclone sync \
+    rclone bisync \
       "${REMOTE_DIR[i]}" "${LOCAL_DIR[i]}" \
       --compare-dest size,modtime,checksum \
       --modify-window 1s \
@@ -29,11 +26,17 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --stats $RCLONE_STATS_INTERVAL \
       --drive-chunk-size $RCLONE_CHUNK_SIZE \
       --drive-upload-cutoff $RCLONE_UPLOAD_CUTOFF \
+      --check-access \
       --no-update-modtime \
-      --no-update-dir-modtime \
+      --recover \
+      --max-lock 2m \
+      --resilient \
       --fix-case \
       --track-renames \
       --create-empty-src-dirs \
+      --slow-hash-sync-only \
+      --conflict-resolve newer \
+      --resync \
       --verbose
 
     sleep 1
@@ -45,5 +48,5 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     fi
   done
 else
-  echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error"
+  echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax dir error"
 fi

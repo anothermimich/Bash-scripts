@@ -45,18 +45,14 @@ After the tests edit `crontab`
 
 Lines to be added
 
-    */15 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
-    @reboot sleep 30 && cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_inotify.sh
+    */30 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
+    @reboot sleep 30 cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
 
 If you want to mount a drive as well add the line bellow with updated locations, note that `--vfs-cache-mode full` don't work well in `FAT/exFAT` file systems.
 
-    @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
+    @reboot sleep 60 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
 
-If you need to add a new folder after the setup, run the following command instead of using the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) script. Change `REMOTE_DIR` and `LOCAL_DIR` to the right locations.
-
-        rclone bisync "REMOTE_DIR" "LOCAL_DIR" --compare-dest size,modtime,checksum --modify-window 1s --drive-acknowledge-abuse --drive-skip-gdocs --drive-skip-shortcuts --drive-skip-dangling-shortcuts --metadata --retries 3 --checkers 4 --transfers 8 --stats 10s --drive-chunk-size 64M --drive-upload-cutoff 512M --check-access --no-update-modtime --resync --verbose
-
-After running this add the new locations to the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) and relax.
+If you need to add a new folder after the setup, add the new location to the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) and run [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) again.
 
 ### Chunk-size<sup>1</sup>
 
@@ -78,7 +74,7 @@ Based on [markuscraig/sync_gdrive.py](https://gist.github.com/markuscraig/4addaf
 
 ## Ç config
 
-Edit `/etc/environment`
+In some `ABNT2` keyboards the `Ç` don't work out of the box. So you need to edit `/etc/environment`
 
     sudo vim /etc/environment
 
