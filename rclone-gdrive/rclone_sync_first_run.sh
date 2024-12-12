@@ -34,9 +34,9 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     sleep 1
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done ${i}"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed  ${i}"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed, entry ${i}"
     fi
   done
 else
