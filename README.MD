@@ -48,6 +48,12 @@ If you want to mount a drive as well add the line bellow with updated locations
 
     @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=9999h --dir-cache-time=9999h --vfs-cache-max-size 5G
 
+If you need to add a new folder after the setup, run the following command with the new folder instead of using the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) script. Change `REMOTE_DIR` and `LOCAL_DIR` to the right locations.
+
+        rclone bisync "REMOTE_DIR" "LOCAL_DIR" --compare-dest size,modtime,checksum --modify-window 1s --drive-acknowledge-abuse --drive-skip-gdocs --drive-skip-shortcuts --drive-skip-dangling-shortcuts --metadata --retries 3 --checkers 4 --transfers 8 --stats 10s --drive-chunk-size 64M --drive-upload-cutoff 512M --check-access --no-update-modtime --resync --verbose
+
+After running this add the new locations to the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) and relax.
+
 ### Chunk-size<sup>1</sup>
 
 A 64M chunk-size is used for performance purposes. Google recommends as large a chunk size as possible. Rclone will use the following amount of RAM at run-time (8MB chunks by default; not high enough)...
