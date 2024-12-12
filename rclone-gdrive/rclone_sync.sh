@@ -40,9 +40,9 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     sleep 1
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Sync failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
       exit
     fi
   done
