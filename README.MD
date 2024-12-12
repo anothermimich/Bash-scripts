@@ -44,7 +44,7 @@ Lines to be added
     */15 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
     @reboot sleep 30 && cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_inotify.sh
 
-If you want to mount a drive as well add the line bellow with updated locations
+If you want to mount a drive as well add the line bellow with updated locations, note that `--vfs-cache-mode full` don't work well in `FAT/exFAT` file systems.
 
     @reboot sleep 20 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
 
