@@ -64,6 +64,18 @@ For more details... https://github.com/ncw/rclone/issues/397
 
 #### Credits
 
-Made by Lu Immich a.k.a https://github.com/anothermimich
-
 Based on [markuscraig/sync_gdrive.py](https://gist.github.com/markuscraig/4addaf7fcfbc281808c3d708d1d35b6f) and on [Faris Khasawneh scripts](https://medium.com/@5a9awneh/setup-google-drive-on-linux-using-rclone-7400182cbf63)
+
+## Ç config
+
+Edit `/etc/environment`
+
+    sudo vim /etc/environment
+
+At the end of the archive add
+
+    GTK_IM_MODULE=cedilla
+
+Restart the computer
+
+    systemctl reboot
