@@ -34,6 +34,7 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --fix-case \
       --track-renames \
       --create-empty-src-dirs \
+      --slow-hash-sync-only \
       --conflict-resolve newer \
       --resync \
       --verbose
