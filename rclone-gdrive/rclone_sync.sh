@@ -33,7 +33,8 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --no-update-dir-modtime \
       --fix-case \
       --track-renames \
-      --create-empty-src-dirs 
+      --create-empty-src-dirs \
+      --update 
 
     sleep 5
 
@@ -59,7 +60,8 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --no-update-dir-modtime \
       --fix-case \
       --track-renames \
-      --create-empty-src-dirs 
+      --create-empty-src-dirs \
+      --update 
 
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Sync done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
