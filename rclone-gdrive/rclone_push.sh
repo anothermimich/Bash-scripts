@@ -8,7 +8,9 @@ source "$(dirname "$0")/rclone_variables.sh"
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
 echo "$(date +'%Y/%m/%d %H:%M:%S') Push started" >> "$HOME/.config/rclone/rclone.log"
+echo "\n"
 echo "--- Google Drive Push ---"
+echo "\n"
 echo "Local ---> Remote"
 echo "Push will start in 10s"
 echo "Press CTRL + C to abbort"
@@ -18,7 +20,6 @@ echo "Push started"
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
     echo "$(date +'%Y/%m/%d %H:%M:%S') Remote --> Local, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
-    echo "Local --> Remote, entry  ${i}"
 
     rclone sync \
       "${LOCAL_DIR[i]}" "${REMOTE_DIR[i]}" \
@@ -47,15 +48,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
 
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Push done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "\n"
       echo "Push done, entry ${i}"
     else
       echo "$(date +'%Y/%m/%d %H:%M:%S') Push failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "\n"
       echo "Push failed, entry ${i}"
       echo "Look at the log for more details"
     fi
   done
 else
   echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error" >> "$HOME/.config/rclone/rclone.log"
+  echo "\n"
   echo "Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
