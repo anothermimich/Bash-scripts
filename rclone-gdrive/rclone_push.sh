@@ -13,9 +13,10 @@ echo "Push started"
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
     echo "$(date +'%Y/%m/%d %H:%M:%S') Remote --> Local, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+    echo "Local --> Remote, entry  ${i}"
 
     rclone sync \
-      "${REMOTE_DIR[i]}" "${LOCAL_DIR[i]}" \
+      "${LOCAL_DIR[i]}" "${REMOTE_DIR[i]}" \
       --compare-dest size,modtime,checksum \
       --modify-window 1s \
       --drive-acknowledge-abuse \
