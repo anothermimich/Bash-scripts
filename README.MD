@@ -55,6 +55,21 @@ If you want to mount a drive as well add the line bellow with updated locations,
 
 #### Alias implementation
 
+    vim ~/.bash_aliases
+
+Lines to be added
+
+    alias gdrive-pull="bash /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_pull_run.sh"
+    alias gdrive-push="bash /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_push_run.sh"
+
+Now you can run
+
+    gdrive-pull
+
+Or
+
+    gdrive-push
+
 ### Chunk-size<sup>1</sup>
 
 A 64M chunk-size is used for performance purposes. Google recommends as large a chunk size as possible. Rclone will use the following amount of RAM at run-time (8MB chunks by default; not high enough)...
