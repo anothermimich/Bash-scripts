@@ -8,6 +8,11 @@ source "$(dirname "$0")/rclone_variables.sh"
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
 echo "$(date +'%Y/%m/%d %H:%M:%S') Push started" >> "$HOME/.config/rclone/rclone.log"
+echo "--- Google Drive Push ---"
+echo "Local ---> Remote"
+echo "Push will start in 10s"
+echo "Press CTRL + C to abbort"
+sleep 10
 echo "Push started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then

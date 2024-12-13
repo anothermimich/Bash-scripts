@@ -2,7 +2,7 @@
 
 ## Rclone Google Drive Backup
 
-As Google insist on not releasing a Drive client for linux, we have to search for alternative ways to use Google Drive. [Rclone](https://rclone.org/) has a `mount` command that is usefull for light use, this scripts complement it by keeping folders that are under heavy use locally for fast access. See the crontab section bellow for the `mount` command.
+As Google insist on not releasing a Drive client for linux, we have to search for alternative ways to use Google Drive. [Rclone](https://rclone.org/) has a `mount` command that is usefull for light use, this scripts complement it by keeping folders that are under heavy use locally for fast access. See the crontab section bellow for the `mount` command. As of this moment the `bisync` function have some quirks that i can't deal with, so the implemented bellow version use 'sync' and manual pull and push.
 
 Before attempting to use this script you need to configure and read the documentation of [rclone](https://rclone.org/). I strongly suggest that you also try the scripts with a test folder or use `--dry-run`.
 
@@ -18,18 +18,18 @@ Create the local folders and an `RCLONE_TEST` file inside of it
     cd folder-name/
     touch RCLONE_TEST
 
-Edit the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) to refers to your envisioned folder or folder.
+Edit the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) to refers to your envisioned folder or folders.
 
     REMOTE_DIR=('remote-name:/folder-name'  'remote-name:/folder-name')
     LOCAL_DIR=('folder-name' 'folder-name')
 
-Move the scripts to the wanted folder, I'm using `/home/lu/Codes/Bash-scripts/rclone-gdrive`
+Move the scripts, I'm using `/home/lu/Codes/Bash-scripts/rclone-gdrive`
 
 Make the scripts executable
 
     chmod +x /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_*.sh
 
-Run the [rclone_pull_run.sh](/rclone-gdrive/rclone_pull_run.sh) on the terminal
+Run the [rclone_pull_run.sh](/rclone-gdrive/rclone_pull_run.sh) on the terminal to get data from the remote folder
 
     ./home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_pull_run.sh
 
@@ -47,7 +47,7 @@ After this you can create and `alias` for the [rclone_pull_run.sh](/rclone-gdriv
 
 Lines to be added
 
-    */90 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_pull_run.sh
+    */240 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_pull_run.sh
 
 If you want to mount a drive as well add the line bellow with updated locations, note that `--vfs-cache-mode full` don't work well in `FAT/exFAT` file systems.
 
@@ -62,11 +62,11 @@ Lines to be added
     alias gdrive-pull="bash /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_pull_run.sh"
     alias gdrive-push="bash /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_push_run.sh"
 
-Now you can run
+To get files from the remote folder you can run
 
     gdrive-pull
 
-Or
+To get files to the remote folder run
 
     gdrive-push
 
