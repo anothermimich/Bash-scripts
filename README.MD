@@ -29,9 +29,9 @@ Make the scripts executable
 
     chmod +x /home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_*.sh
 
-Run the [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) on the terminal
+Run the [rclone_pull_run.sh](/rclone-gdrive/rclone_pull_run.sh) on the terminal
 
-    ./home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_sync_first_run.sh
+    ./home/lu/Codes/Bash-scripts/rclone-gdrive/rclone_pull_run.sh
 
 If the result is
 
@@ -39,20 +39,21 @@ If the result is
 - Sync failed: Ops, you need to troubleshoot. Check the log file at `$HOME/.config/rclone/rclone.log`.
 - Sintax dir error: Check the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) for errors. The `REMOTE_DIR` and `LOCAL_DIR` must match in order and ammount of entries.
 
-After the tests edit `crontab`
+After this you can create and `alias` for the [rclone_pull_run.sh](/rclone-gdrive/rclone_pull_run.sh) and [rclone_push_run.sh](/rclone-gdrive/rclone_push_run.sh) or edit `crontab` to execute them with the wanted time interval.
+
+#### Crontab implementation
 
     crontab -e
 
 Lines to be added
 
-    */30 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
-    @reboot sleep 30 cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_timer.sh
+    */90 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_pull_run.sh
 
 If you want to mount a drive as well add the line bellow with updated locations, note that `--vfs-cache-mode full` don't work well in `FAT/exFAT` file systems.
 
     @reboot sleep 60 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
 
-If you need to add a new folder after the setup, add the new location to the [rclone_variables.sh](/rclone-gdrive/rclone_variables.sh) and run [rclone_sync_first_run.sh](/rclone-gdrive/rclone_sync_first_run.sh) again.
+#### Alias implementation
 
 ### Chunk-size<sup>1</sup>
 
