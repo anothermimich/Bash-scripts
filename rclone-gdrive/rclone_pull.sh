@@ -15,6 +15,7 @@ echo "Remote --> Local"
 echo "Pull will start in 10s"
 echo "Press CTRL + C to abbort"
 sleep 10
+echo ""
 echo "Pull started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then

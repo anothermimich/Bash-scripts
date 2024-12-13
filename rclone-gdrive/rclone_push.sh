@@ -15,6 +15,7 @@ echo "Local ---> Remote"
 echo "Push will start in 10s"
 echo "Press CTRL + C to abbort"
 sleep 10
+echo ""
 echo "Push started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
