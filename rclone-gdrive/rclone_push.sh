@@ -64,3 +64,5 @@ else
   echo "Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
+
+echo 
