@@ -8,14 +8,14 @@ source "$(dirname "$0")/rclone_variables.sh"
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
 echo "$(date +'%Y/%m/%d %H:%M:%S') Pull started" >> "$HOME/.config/rclone/rclone.log"
-echo ""
+echo 
 echo "--- Google Drive Pull ---"
-echo ""
+echo 
 echo "Remote --> Local"
 echo "Pull will start in 10s"
 echo "Press CTRL + C to abbort"
 sleep 10
-echo ""
+echo 
 echo "Pull started"
 
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
@@ -49,18 +49,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
 
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
-      echo ""
+      echo 
       echo "Pull done, entry ${i}"
     else
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
-      echo ""
+      echo 
       echo "Pull failed, entry ${i}"
       echo "Look at the log for more details"
     fi
   done
 else
   echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error" >> "$HOME/.config/rclone/rclone.log"
-  echo ""
+  echo 
   echo "Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
