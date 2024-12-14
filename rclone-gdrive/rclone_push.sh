@@ -51,18 +51,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Push done, ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Push ${GREEN}done${NC}, ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
+      echo -e "Push ${GREEN}done${NC}, ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
     else
       echo "$(date +'%Y/%m/%d %H:%M:%S') Push failed, entry ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Push ${RED}failed${NC}, entry ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
+      echo -e "Push ${RED}failed${NC}, entry ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
       echo "Look at the log for more details"
     fi
   done
 else
   echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error" >> "$HOME/.config/rclone/rclone.log"
   echo 
-  echo "${RED}Sintax DIR error"
+  echo -e "${RED}Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
 

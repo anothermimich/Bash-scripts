@@ -52,18 +52,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull done, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull ${RED}done${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
+      echo -e "Pull ${GREEN}done${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
     else
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull failed, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull ${RED}failed${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
+      echo -e "Pull ${RED}failed${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
       echo "Look at the log for more details"
     fi
   done
 else
   echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error" >> "$HOME/.config/rclone/rclone.log"
   echo 
-  echo "${RED}Sintax DIR error"
+  echo  -e "${RED}Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
 
