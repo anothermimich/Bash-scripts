@@ -21,7 +21,7 @@ echo "Push started"
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
     echo "$(date +'%Y/%m/%d %H:%M:%S') Remote --> Local, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
-
+    echo 
     rclone sync \
       "${LOCAL_DIR[i]}" "${REMOTE_DIR[i]}" \
       --compare-dest size,modtime,checksum \
@@ -43,18 +43,19 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --fix-case \
       --track-renames \
       --create-empty-src-dirs \
-      --update 
+      --update \
+      --progress
 
     sleep 5
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Push done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Push done, ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Push done, entry ${i}"
+      echo "Push done, ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Push failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Push failed, entry ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Push failed, entry ${i}"
+      echo "Push failed, entry ${LOCAL_DIR[i]} to ${REMOTE_DIR[i]}"
       echo "Look at the log for more details"
     fi
   done

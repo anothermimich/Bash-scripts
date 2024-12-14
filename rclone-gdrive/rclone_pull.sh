@@ -21,6 +21,7 @@ echo "Pull started"
 if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
   for ((i = 0 ; i < "${#REMOTE_DIR[@]}"; i++)); do
     echo "$(date +'%Y/%m/%d %H:%M:%S') Local --> Remote, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+    echo
 
     rclone sync \
       "${REMOTE_DIR[i]}" "${LOCAL_DIR[i]}" \
@@ -43,18 +44,19 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
       --fix-case \
       --track-renames \
       --create-empty-src-dirs \
-      --update 
+      --update \
+      --progress
 
     sleep 5
 
     if [ $? -eq 0 ]; then
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Pull done, entry ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Pull done, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull done, entry ${i}"
+      echo "Pull done, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
     else
-      echo "$(date +'%Y/%m/%d %H:%M:%S') Pull failed, entry  ${i}" >> "$HOME/.config/rclone/rclone.log"
+      echo "$(date +'%Y/%m/%d %H:%M:%S') Pull failed, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull failed, entry ${i}"
+      echo "Pull failed, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
       echo "Look at the log for more details"
     fi
   done
