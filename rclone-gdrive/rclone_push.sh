@@ -7,10 +7,6 @@ source "$(dirname "$0")/rclone_variables.sh"
 #
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-
 echo "$(date +'%Y/%m/%d %H:%M:%S') Push started" >> "$HOME/.config/rclone/rclone.log"
 echo 
 echo "--- Google Drive Push ---"
