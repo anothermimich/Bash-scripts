@@ -7,6 +7,11 @@ source "$(dirname "$0")/rclone_variables.sh"
 #
 # Based on markuscraig/sync_gdrive.py and on Faris Khasawneh scripts
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+
 echo "$(date +'%Y/%m/%d %H:%M:%S') Pull started" >> "$HOME/.config/rclone/rclone.log"
 echo 
 echo "--- Google Drive Pull ---"
@@ -52,18 +57,18 @@ if  [[  "${#LOCAL_DIR[@]}" == "${#REMOTE_DIR[@]}" ]]; then
     if [ $? -eq 0 ]; then
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull done, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull done, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
+      echo "Pull ${RED}done${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
     else
       echo "$(date +'%Y/%m/%d %H:%M:%S') Pull failed, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}" >> "$HOME/.config/rclone/rclone.log"
       echo 
-      echo "Pull failed, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
+      echo "Pull ${RED}failed${NC}, ${REMOTE_DIR[i]} to ${LOCAL_DIR[i]}"
       echo "Look at the log for more details"
     fi
   done
 else
   echo "$(date +'%Y/%m/%d %H:%M:%S') Sintax DIR error" >> "$HOME/.config/rclone/rclone.log"
   echo 
-  echo "Sintax DIR error"
+  echo "${RED}Sintax DIR error"
   echo "Check the variables as it can be the problem" 
 fi
 
