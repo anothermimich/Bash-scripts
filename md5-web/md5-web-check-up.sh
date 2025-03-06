@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source "$(dirname "$0")/md5-web-variables.sh"
+source "$(dirname "$0")/md5-web-mail.sh"
 
 echo 
 echo "--- MD5 Check ---"
@@ -8,14 +9,14 @@ echo
 
 for ((i = 0 ; i < "${#URL[@]}"; i++)); do
 	curl --silent ${URL[i]} | md5sum > check${i}.md5new
-
 	if ! cmp check${i}.md5 check${i}.md5new > /dev/null; then
-		echo "Go check ${URL[i]}" | mail -s "Change detected - MD5 Check " user@mail.com
-		echo "Go check ${URL[i]}" | mail -s "Change detected - MD5 Check " user@mail.com
+		for ((c = 0 ; c < "${#MAIL[@]}"; c++)); do
+			echo "Go check ${URL[i]}" | mail -s "Change detected - MD5 Check " ${MAIL[c]}
+		done
 		echo -e "Go check ${URL[i]}" 
 		mv check${i}.md5new check${i}.md5
 	else
 		echo -e "No changes detected in ${URL[i]}"
+		rm check${i}.md5new
 	fi
-rm check${i}.md5new
 done
