@@ -7,5 +7,5 @@ echo "--- MD5 Fingerprint ---"
 echo 
 
 for ((i = 0 ; i < "${#URL[@]}"; i++)); do
-	curl --silent ${URL[i]} | md5sum > check${[i]}.md5
+	curl --silent ${URL[i]} | md5sum > check${i}.md5
 done
