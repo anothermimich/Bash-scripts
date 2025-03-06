@@ -47,11 +47,11 @@ After this you can create and `alias` for the [rclone_pull_run.sh](/rclone-gdriv
 
 Lines to be added
 
-    */240 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_pull_run.sh
+    */240 * * * * cd /home/lu/Codes/Bash-scripts/rclone-gdrive/ && ./rclone_pull_run.sh >/dev/null 2&1
 
 If you want to mount a drive as well add the line bellow with updated locations, note that `--vfs-cache-mode full` don't work well in `FAT/exFAT` file systems.
 
-    @reboot sleep 60 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G
+    @reboot sleep 60 && rclone mount g_drive:/ /home/user/Drive/ --vfs-cache-mode full --vfs-cache-max-age=72h --dir-cache-time=72h --vfs-cache-max-size 1G >/dev/null 2&1
 
 #### Alias implementation
 
@@ -101,3 +101,13 @@ At the end of the archive add
 Restart the computer
 
     systemctl reboot
+
+## MD5 Check
+
+Configure `ssmtp` and `mailutils`. Then create the file `md5-web-mail.sh` and add the mail variables in there
+
+    MAIL=('user@mail.com' 'other@mail.com)
+
+Update the crontab to include the followwing line
+
+    */5 * * * * cd /home/lu/Codes/Bash-scripts/md5-web/ && ./md5-web-chek-up.sh >/dev/null 2&1
