@@ -102,12 +102,12 @@ Restart the computer
 
     systemctl reboot
 
-## MD5 Check
+## MD5 Web
 
 Configure `ssmtp` and `mailutils`. Then create the file `md5-web-mail.sh` and add the mail variables in there
 
     MAIL=('user@mail.com' 'other@mail.com)
 
-Update the crontab to include the followwing line
+Run the [fingerprint script](/md5-web/md5-web-fingerprint.sh). Update the crontab to include the followwing line
 
     */5 * * * * cd /home/lu/Codes/Bash-scripts/md5-web/ && ./md5-web-chek-up.sh >/dev/null 2&1
