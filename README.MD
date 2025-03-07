@@ -106,7 +106,7 @@ Restart the computer
 
 Configure `ssmtp` and `mailutils`. Then create the file `md5-web-mail.sh` and add the mail variables in there
 
-    MAIL=('user@mail.com' 'other@mail.com)
+    MAIL=('user@mail.com' 'other@mail.com')
 
 Update the [variables](/md5-web/md5-web-variables.sh); `cd` into the script folder; run the [check up script](/md5-web/md5-web-check-up.sh); update the crontab to include the followwing line
 
