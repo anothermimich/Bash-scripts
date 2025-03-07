@@ -7,5 +7,8 @@ echo "--- MD5 Fingerprint ---"
 echo 
 
 for ((i = 0 ; i < "${#URL[@]}"; i++)); do
-	curl --silent ${URL[i]} | md5sum > check${i}.md5
+	if [ ! -f check${i}.md5 ]; then
+		curl --silent ${URL[i]} | md5sum > check${i}.md5
+		echo -e "Creating a new file for ${URL[i]}"
+	fi
 done
