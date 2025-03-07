@@ -1,4 +1,4 @@
-# Linux Caveats
+# Bash scripts
 
 ## Rclone Google Drive Backup
 
