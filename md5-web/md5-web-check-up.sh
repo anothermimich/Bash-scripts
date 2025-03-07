@@ -8,7 +8,7 @@ echo "--- MD5 Check ---"
 echo 
 
 for ((i = 0 ; i < "${#URL[@]}"; i++)); do
-	curl --silent ${URL[i]} | md5sum > check${i}.md5new
+	curl --silent "${URL[i]}?$(date +%s)" | md5sum > check${i}.md5new
 	if ! cmp check${i}.md5 check${i}.md5new > /dev/null; then
 		for ((c = 0 ; c < "${#MAIL[@]}"; c++)); do
 			echo "Go check ${URL[i]}" | mail -s "Change detected - MD5 Check " ${MAIL[c]}
