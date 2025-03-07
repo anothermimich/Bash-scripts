@@ -108,6 +108,6 @@ Configure `ssmtp` and `mailutils`. Then create the file `md5-web-mail.sh` and ad
 
     MAIL=('user@mail.com' 'other@mail.com)
 
-Run the [fingerprint script](/md5-web/md5-web-fingerprint.sh). Update the crontab to include the followwing line
+Update the [variables](/md5-web/md5-web-variables.sh); `cd` into the script folder; run the [check up script](/md5-web/md5-web-check-up.sh); update the crontab to include the followwing line
 
     */5 * * * * cd /home/lu/Codes/Bash-scripts/md5-web/ && ./md5-web-chek-up.sh >/dev/null 2&1
