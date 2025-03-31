@@ -111,3 +111,9 @@ Configure `ssmtp` and `mailutils`. Then create the file `md5-web-mail.sh` and ad
 Update the [variables](/md5-web/md5-web-variables.sh); `cd` into the script folder; run the [check up script](/md5-web/md5-web-check-up.sh); update the crontab to include the followwing line
 
     */5 * * * * cd /home/lu/Codes/Bash-scripts/md5-web/ && ./md5-web-chek-up.sh >/dev/null 2&1
+
+## Zotero Etheral
+
+Custom filter for pdf read
+
+        canvas{filter: brightness(0.89) grayscale(0.15) invert(0.95) hue-rotate(180deg) !important; }
