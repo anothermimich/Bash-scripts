@@ -117,3 +117,9 @@ Update the [variables](/md5-web/md5-web-variables.sh); `cd` into the script fold
 Custom filter for pdf read
 
         canvas{filter: brightness(0.89) grayscale(0.15) invert(0.95) hue-rotate(180deg) !important; }
+
+## OCRmyPDF
+
+Use [PDF Arranger](https://github.com/pdfarranger/pdfarranger) to adjust the pdf pages and crop. Then, use the following command to ocr it. Make sure to navigate to the folder or to include the corrent path to the input and output file.
+
+    ocrmypdf --deskew -l por input.pdf output.pdf
