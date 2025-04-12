@@ -120,6 +120,6 @@ Custom filter for pdf read
 
 ## OCRmyPDF
 
-Use [PDF Arranger](https://github.com/pdfarranger/pdfarranger) to adjust the pdf pages and crop. Then, use the following command to ocr it. Make sure to navigate to the folder or to include the corrent path to the input and output file.
+Use [PDF Arranger](https://github.com/pdfarranger/pdfarranger) to adjust the pdf pages and crop. Then install [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) and use the following command to ocr it. Make sure to navigate to the folder or to include the corrent path to the input and output file.
 
     ocrmypdf --deskew -l por input.pdf output.pdf
