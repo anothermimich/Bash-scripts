@@ -123,3 +123,17 @@ Custom filter for pdf read
 Use [PDF Arranger](https://github.com/pdfarranger/pdfarranger) to adjust the pdf pages and crop. Then install [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) and use the following command to ocr it. Make sure to navigate to the folder or to include the corrent path to the input and output file.
 
     ocrmypdf --deskew -l por input.pdf output.pdf
+
+## Wacom scroll
+
+First list the devices using
+
+    xsetwacom --list devices
+
+To enable scroll/pan using the lower button in wacon pen (Button 2)
+
+    xsetwacom --set "Wacom One by Wacom S Pen stylus" Button 2 "pan"
+
+To increase the sensitivity decrease the value of "PanScrollThreshold" (the default value was 1300)
+
+    xsetwacom --set "Wacom One by Wacom S Pen stylus" "PanScrollThreshold" 200
