@@ -124,7 +124,9 @@ Use [PDF Arranger](https://github.com/pdfarranger/pdfarranger) to adjust the pdf
 
     ocrmypdf --deskew -l por input.pdf output.pdf
 
-## Wacom scroll
+## Wacom Tablet
+
+### Scroll
 
 First list the devices using
 
@@ -137,3 +139,9 @@ To enable scroll/pan using the lower button in wacon pen (Button 2)
 To increase the sensitivity decrease the value of "PanScrollThreshold" (the default value was 1300)
 
     xsetwacom --set "Wacom One by Wacom S Pen stylus" "PanScrollThreshold" 200
+
+### Invert
+
+To invert the tablet horizontally change the "Rotate" parameter to half
+
+    xsetwacom --set "Wacom One by Wacom S Pen stylus" "Rotate" half
