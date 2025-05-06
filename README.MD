@@ -145,3 +145,7 @@ To increase the sensitivity decrease the value of "PanScrollThreshold" (the defa
 To invert the tablet horizontally change the "Rotate" parameter to half
 
     xsetwacom --set "Wacom One by Wacom S Pen stylus" "Rotate" half
+
+### Script
+
+Go to wacom-x11 folder for that.
