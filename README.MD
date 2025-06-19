@@ -149,3 +149,11 @@ To invert the tablet horizontally change the "Rotate" parameter to half
 ### Script
 
 Go to wacom-x11 folder for that.
+
+## Imagemagick PDF Contrast
+
+    convert -density 300 input.pdf -normalize -sharpen 0x2 -compress jpeg -quality 70 -colorspace gray -contrast -contrast -contrast output.pdf
+
+## Issuu download
+
+Use the script inside the folder `Issuu`

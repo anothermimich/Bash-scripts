@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+html=$(wget --quiet --output-document=- "$1")
+
+page_count=$(echo "$html" |\
+    grep --only-matching --perl-regexp 'pageCount\\":\K\d+')
+[[ $page_count -gt 0 ]] || { echo 'no pages' && exit 1; }
+
+publication_id=$(echo "$html" |\
+    grep --only-matching --perl-regexp 'publicationId\\":\\"\K[a-z0-9]+' |\
+    head -1)
+[[ -n $publication_id ]] || { echo 'no publication_id' && exit 1; }
+
+revision_id=$(echo "$html" |\
+    grep --only-matching --perl-regexp 'revisionId\\":\\"\K[0-9]+' |\
+    cut -d ' ' -f 1)
+[[ -n $revision_id ]] || { echo 'no revision_id' && exit 1; }
+
+title=$(echo "$html" |\
+    grep --only-matching --perl-regexp 'title\\":\\"\K[^"]+' |\
+    head -1 |\
+    sed 's/.$//' |\
+    # Remove '/'.
+    sed 's/\///g')
+[[ -z $title ]] && title=issuu
+
+tmp_dir=$(mktemp --directory)
+for ((i = 1; i <= page_count; i++)); do
+    wget --quiet --output-document="${tmp_dir}/${i}.jpg" \
+        "https://image.isu.pub/${revision_id}-${publication_id}/jpg/page_${i}.jpg" &
+done
+
+echo -n 'Downloading... '
+wait
+echo done!
+
+echo Converting...
+# convert doesn't like long filenames(252 bytes, I think).
+tmp_file="${tmp_dir}/t.pdf"
+convert \
+    $(find "$tmp_dir" -type f -printf '%f\n' |\
+    sort --numeric-sort |\
+    awk -v dir="$tmp_dir" '{ printf dir "/" $1 " " }') \
+    "$tmp_file"
+mv "$tmp_file" "$title".pdf
+
+exit 0
+
+# vim: set ft=bash
