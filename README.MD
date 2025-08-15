@@ -152,7 +152,11 @@ Go to wacom-x11 folder for that.
 
 ## Imagemagick PDF Contrast
 
-    convert -density 300 input.pdf -normalize -sharpen 0x2 -compress jpeg -quality 70 -colorspace gray -contrast -contrast -contrast output.pdf
+    convert -density 300 input.pdf -normalize -sharpen 0x1 -compress jpeg -quality 70 -colorspace gray -contrast -contrast -contrast output.pdf
+
+    convert -density 300 input.pdf -level 50%,51% sharpen 0x1 output.pdf
+
+    convert -density 300 -despeckle -blur 1.0 -threshold 60% inputocrsc.pdf outputfile.pdf
 
 ## Issuu download
 
