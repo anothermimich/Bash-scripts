@@ -161,3 +161,21 @@ Go to wacom-x11 folder for that.
 ## Issuu download
 
 Use the script inside the folder `Issuu`
+
+## Car Multimidia
+
+# Apps
+
+    - Olauncher
+    -
+
+### Music Player
+
+The `10604` build is a modded version of the `10603` metro music player that has total black splash screen, now playing auto scroll enabled on music reprodution and drive modeenabled by default.
+
+### Music organizer script
+
+To help the indexation use this script
+
+    chmod +x organize_car_music.sh
+    ./organize_car_music.sh INPUT OUTPUT
