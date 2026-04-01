@@ -169,9 +169,9 @@ Use the script inside the folder `Issuu`
     - Olauncher
     -
 
-### Music Player
+### Metro Music Player
 
-The `10604` build is a modded version of the `10603` metro music player that has total black splash screen, now playing auto scroll enabled on music reprodution and drive modeenabled by default.
+I've modded the Metro App `10603`, to make it more adequate for driving. The `10603` has a full black splash screen. The `10604`open the now playing automatically on play and has the splash mod. The `10605` open the drivemode on play and has the splash mod.
 
 ### Music organizer script
 
